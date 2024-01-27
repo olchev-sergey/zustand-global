@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
+    'plugin:import/recommended',
     'plugin:prettier/recommended', // must be last
   ],
   overrides: [
@@ -33,9 +34,30 @@ module.exports = {
   plugins: ['prettier', '@typescript-eslint', 'react'],
   rules: {
     'prettier/prettier': 'error',
-    'import/extensions': ['error', 'ignorePackages'],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
 
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 'off',
+
+    'import/prefer-default-export': 'off',
+
+    'import/resolver': [
+      'off',
+      {
+        alias: {
+          map: [['@', './src']],
+          extensions: ['.ts', '.js', '.json'],
+        },
+      },
+    ],
   },
 }

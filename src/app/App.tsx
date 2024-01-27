@@ -1,5 +1,7 @@
+import { Main } from '@/pages/main'
+
 function App() {
-  return <>hello world</>
+  return <Main />
 }
 
 export default App
